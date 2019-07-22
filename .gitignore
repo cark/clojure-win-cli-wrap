@@ -1,3 +1,5 @@
 .vscode/
 clj.exe
 clojure.exe
+release/
+*.*~
