@@ -99,6 +99,7 @@ proc testEscaping() : void =
     testStrings(fixEscaping(testString), resultString)
     testString = """clojure -Sdeps '{:deps {nrepl {:mvn/version "0.6.0"} refactor-nrepl {:mvn/version "2.5.0-SNAPSHOT"} cider/cider-nrepl {:mvn/version "0.22.0-beta4"}}}' -m nrepl.cmdline --middleware '["refactor-nrepl.middleware/wrap-refactor", "cider.nrepl/cider-middleware"]'"""    
     resultString = """clojure -Sdeps '{:deps {nrepl {:mvn/version \"0.6.0\"} refactor-nrepl {:mvn/version \"2.5.0-SNAPSHOT\"} cider/cider-nrepl {:mvn/version \"0.22.0-beta4\"}}}' -m nrepl.cmdline --middleware '[\"refactor-nrepl.middleware/wrap-refactor\", \"cider.nrepl/cider-middleware\"]'"""
+    testStrings(fixEscaping(testString), resultString)
 
 # launches powershell with the command encoded to base64 in order to avoid any more escaping shenanigans than we already have
 proc launch(command : string) : void = 
@@ -120,8 +121,8 @@ proc prepareCommand() : string =
                         cmdlet
                     else:
                         cmdlet & " " & paramString
-    result = fixEscaping(theCommand)
+    return theCommand
     # echo ">>>", theCommand , "<<<"
 
-prepareCommand().launch()
+prepareCommand().fixEscaping().launch()
 #testEscaping()
