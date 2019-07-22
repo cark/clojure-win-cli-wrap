@@ -112,7 +112,10 @@ proc launch(command : string) : void =
     quit(exitCode)
 
 # we'll define it to clj for the clj executable when compiling
-const cmdlet {.strdefine.}: string = "clojure"
+# const cmdlet {.strdefine.}: string = "clojure"
+# Looks like we only have Invoke-Clojure behind the scene
+
+const cmdlet : string = "Invoke-Clojure"
 
 proc prepareCommand() : string =
     var commandLine : string = $ getCommandLineW()
