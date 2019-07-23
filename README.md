@@ -18,8 +18,10 @@ clojure -Sdeps "{:aliases {:shadow-cljs-inject {:extra-deps {thheller/shadow-clj
 
 ## Language choice
 This project uses the Nim programming language, version 0.19.0. I'm certainly not dead set on this language, but I find it easy to write and read, and it produces small, stand alone, garbage collected, binary files. This program is very small, so there is no issue with rewriting it in any language.
+## Testing
+The test.cmd file tests the parsing/escaping routines
 ## Compiling
-Just run the compile.cmd file to produce both executables.
+Just run the compile.cmd file to test, then produce both executables. 
 ## What's this base64 thing in the code?
 In order to avoid encountering more quotes/doublequotes escaping issues, we're using the -EncodedCommand of powershell. This takes a base64 command. The downside is that this may trigger anti-virus softwares.
 ## License
