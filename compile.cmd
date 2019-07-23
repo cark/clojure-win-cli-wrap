@@ -1,3 +1,5 @@
+call test.cmd
+@if ERRORLEVEL 1 GOTO error
 nim c -d:cmdlet=clojure -d:release --opt:size -o:clojure.exe clojure.nim
 @if ERRORLEVEL 1 GOTO error
 nim c -d:cmdlet=clj -d:release --opt:size -o:clj.exe clojure.nim
