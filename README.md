@@ -1,13 +1,15 @@
 # clojure-win-cli-wrap
 A wrapper around the powershell clojure cli
 ## What is it ?
-This is intended to alleviate the pains of using the clojure cli tools from the regular Windows command line.
-The provided Nim source can be compiled to a clojure.exe and clj.exe files that will call the respective cmdlets in powershell.
+This is intended to alleviate the pains of using the clojure cli tools from the regular Windows command line. We aim at providing
+an experience as close as possible to the unix cli user experience, but we do not aim at supporting the very recent powershell cli, this remains available by launching powershell and using the existing tools.
+The provided Nim source can be compiled to a clojure.exe and clj.exe files that will call the Invoke-Clojure command provided by Cognitect.
+
 ## Status
-This first (very much alpha) version accepts a few quotation and escaping styles, and translates these to something that works.
+This alpha version accepts a couple quotation and escaping styles, and translates these to something that works.
 Right now, I focused on making shadow-cljs and cider work, I also tested some other command lines, but i'm not an expert ! So I'm counting on the community to bring me some error cases.
 
-Some examples of pretty hairy command lines that work :
+Some examples of pretty hairy command lines that do work :
 ```
 clojure -Sdeps '{:deps {nrepl {:mvn/version "0.6.0"} refactor-nrepl {:mvn/version "2.5.0-SNAPSHOT"} cider/cider-nrepl {:mvn/version "0.22.0-beta4"}}}' -m nrepl.cmdline --middleware '["refactor-nrepl.middleware/wrap-refactor", "cider.nrepl/cider-middleware"]'
 ```
@@ -20,15 +22,14 @@ clojure -Sdeps "{:aliases {:shadow-cljs-inject {:extra-deps {thheller/shadow-clj
 ```
 clj -Sdeps '{:deps {viebel/klipse-repl {:mvn/version "0.2.3"}}}' -m klipse-repl.main
 ```
-
 ## Language choice
-This project uses the Nim programming language, version 0.19.0. I'm certainly not dead set on this language, but I find it easy to write and read, and it produces small, stand alone, garbage collected, binary files. This program is very small, so there is no issue with rewriting it in any language.
+This project uses the Nim programming language, version 0.19.0. I'm certainly not dead set on this language, but I find it easy to write and read. It produces small, stand alone, garbage collected binary files. This program is tiny, so there is no issue with rewriting it in any language.
 ## Testing
 The test.cmd file tests the parsing/escaping routines
 ## Compiling
-Just run the compile.cmd file to test, then produce both executables. 
+Run the compile.cmd file to test, then produce both executables. 
 ## What's this base64 thing in the code?
-In order to avoid encountering more quotes/doublequotes escaping issues, we're using the -EncodedCommand of powershell. This takes a base64 command. The downside is that this may trigger anti-virus softwares.
+In order to avoid encountering more quotes/doublequotes escaping issues, we're using the -EncodedCommand of powershell. This takes a base64 command. The downside is that this may trigger some anti-virus softwares (though this wasn't reported to me yet).
 ## License
 Copyright (c) Sacha De Vos and contributors. All rights reserved.
 
