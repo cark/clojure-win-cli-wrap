@@ -3,7 +3,7 @@ A wrapper around the powershell clojure cli
 ## What is it ?
 This is intended to alleviate the pains of using the clojure cli tools from the regular Windows command line. We aim at providing
 an experience as close as possible to the unix cli user experience, but we do not aim at supporting the very recent powershell cli, this remains available by launching powershell and using the existing tools.
-The provided Nim source can be compiled to a clojure.exe and clj.exe files that will call the Invoke-Clojure command provided by Cognitect.
+The provided Nim source can be compiled to a clojure.exe and clj.exe files that will call the Invoke-Clojure command provided by Cognitect. My goal is to have this, or something like it included in the official windows distribution of clojure.
 
 ## Status
 This alpha version accepts a couple quotation and escaping styles, and translates these to something that works.
