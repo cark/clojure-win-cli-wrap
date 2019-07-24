@@ -16,6 +16,11 @@ clojure -Sdeps '{:deps {nrepl {:mvn/version "0.6.0"} refactor-nrepl {:mvn/versio
 clojure -Sdeps "{:aliases {:shadow-cljs-inject {:extra-deps {thheller/shadow-cljs {:mvn/version \"2.8.28\"}}}}}" -A:dev:example:shadow-cljs-inject -m shadow.cljs.devtools.cli --npm
 ```
 
+[TDEPS-133](https://clojure.atlassian.net/projects/TDEPS/issues/TDEPS-133)
+```
+clj -Sdeps '{:deps {viebel/klipse-repl {:mvn/version "0.2.3"}}}' -m klipse-repl.main
+```
+
 ## Language choice
 This project uses the Nim programming language, version 0.19.0. I'm certainly not dead set on this language, but I find it easy to write and read, and it produces small, stand alone, garbage collected, binary files. This program is very small, so there is no issue with rewriting it in any language.
 ## Testing

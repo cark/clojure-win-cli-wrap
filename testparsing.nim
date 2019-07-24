@@ -27,3 +27,5 @@ suite "getParamString":
         check(getParamString("\"c:\\program files\\bleh\\clojure.exe\"") == "")
     test "the exe has spaces in it + params":
         check(getParamString("\"c:\\program files\\bleh\\clojure.exe\" some params") == "some params")
+    test "Empty string" :
+        check(getParamString("") == "")

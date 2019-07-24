@@ -2,31 +2,30 @@
 # module parsing
 import strutils
 
+type GetParamStringParseState = enum
+    gpsParsing, gpsInDblQuotes, gpsGotExe
+
 # Removes the executable file name from a full command line,
 # taking care of executable names in double quotes
 proc getParamString*(cmdLine :string) : string {.noSideEffect.} =
+    let text = cmdLine.strip()
     var i = 0
-    var l = len(cmdLine)
-    var inDblQuotes = false
-    var gotExeName = false
-    while  i < l :
-        case cmdLine[i] :
-            of '"' : 
-                if gotExeName :
-                    break
-                else:
-                    if inDblQuotes :
-                        gotExeName = true
-                    else:
-                        inDblQuotes = true
-            of ' ' :                
-                if not inDblQuotes :
-                    gotExeName = true                    
-            else: 
-                if gotExeName :
-                    break
+    var stringLength = text.len()
+    var state = gpsParsing;
+    while i < stringLength :
+        case state :
+            of gpsParsing : 
+                case text[i] :
+                    of '"' : state = gpsInDblQuotes
+                    of ' ' : state = gpsGotExe
+                    else : discard
+            of gpsInDblQuotes : 
+                case text[i] :
+                    of '"' : state = gpsGotExe
+                    else: discard
+            of gpsGotExe : break
         i += 1
-    return cmdLine[i..len(cmdLine)-1].strip();
+    return text[i..stringLength - 1].strip()
 
 # a simple command line
 # clojure.exe -i main.clj -m main -C:dev
