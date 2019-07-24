@@ -29,7 +29,7 @@ The test.cmd file tests the parsing/escaping routines
 ## Compiling
 Run the compile.cmd file to test, then produce both executables. 
 ## What's this base64 thing in the code?
-In order to avoid encountering more quotes/doublequotes escaping issues, we're using the -EncodedCommand of powershell. This takes a base64 command. The downside is that this may trigger some anti-virus softwares (though this wasn't reported to me yet).
+In order to avoid encountering more quotes/doublequotes escaping issues, we're using the -EncodedCommand of powershell. This takes a base64 encoded command. The downside is that this may trigger some anti-virus softwares (though this wasn't reported to me yet).
 ## License
 Copyright (c) Sacha De Vos and contributors. All rights reserved.
 
