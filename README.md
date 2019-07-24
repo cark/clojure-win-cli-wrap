@@ -7,7 +7,7 @@ The provided Nim source can be compiled to a clojure.exe and clj.exe files that 
 
 ## Status
 This alpha version accepts a couple quotation and escaping styles, and translates these to something that works.
-Right now, I focused on making shadow-cljs and cider work, I also tested some other command lines, but i'm not an expert ! So I'm counting on the community to bring me some error cases.
+Right now, I focused on making shadow-cljs and cider work, I also tested some other command lines, but i'm not a clojure cli expert ! So I'm counting on the community to bring me some error cases.
 
 Some examples of pretty hairy command lines that do work :
 ```
